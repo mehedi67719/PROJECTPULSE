@@ -14,11 +14,11 @@ const Navbar = () => {
     const User = null
 
     const navLinks = [
-        { name: 'Dashboard', href: '/dashboard', color: 'text-white' },
-        { name: 'Projects', href: '/projects', color: 'text-white' },
-        { name: 'Users', href: '/users', color: 'text-white' },
-        { name: 'Risks', href: '/risks', color: 'text-red-400' },
-        { name: 'Activity', href: '/activity', color: 'text-white' },
+        { name: 'Dashboard', href: '/Pages/Admin/Dashboard', color: 'text-white' },
+        { name: 'Projects', href: '/Pages/Admin/Projects', color: 'text-white' },
+        { name: 'Users', href: '/Pages/Admin/Users', color: 'text-white' },
+        { name: 'Risks', href: '/Pages/Admin/risks', color: 'text-red-400' },
+        { name: 'Activity', href:'/Pages/Admin/activity', color: 'text-white' },
     ];
 
     return (
@@ -54,7 +54,7 @@ const Navbar = () => {
                                         alt="Admin"
                                     />
                                 </div>) : (
-                                    <Button><Link href='/login'>Login</Link></Button>
+                                    <Button><Link href='/Pages/Authintaction/login'>Login</Link></Button>
                                 )
                             }
                         </div>
