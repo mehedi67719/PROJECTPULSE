@@ -1,11 +1,17 @@
 "use client";
 import { useState } from 'react';
-import Link from 'next/link';
 import Logo from '@/app/page';
+import Button from '@/Hook/Button/page';
+import Link from 'next/link';
+
+
+
+
 
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const User = null
 
     const navLinks = [
         { name: 'Dashboard', href: '/dashboard', color: 'text-white' },
@@ -17,38 +23,45 @@ const Navbar = () => {
 
     return (
         <nav className="bg-gray-900 text-white shadow-xl sticky top-0 z-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-[90%]  mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
-                    
+
                     <div className="flex-shrink-0">
                         <Link href="/">
-                           <Logo/>
+                            <Logo></Logo>
                         </Link>
                     </div>
 
                     <div className="hidden md:flex items-center space-x-6">
                         {navLinks.map((link) => (
-                            <Link 
+                            <Link
                                 key={link.name}
-                                href={link.href} 
+                                href={link.href}
                                 className={`px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-800 transition-all ${link.color}`}
                             >
                                 {link.name}
                             </Link>
                         ))}
-                        
+
                         <div className="flex items-center space-x-3 border-l border-gray-700 pl-4 ml-2">
-                            <span className="text-xs text-gray-400">Admin</span>
-                            <img 
-                                src="https://ui-avatars.com/api/?name=Admin+User&background=0D8ABC&color=fff" 
-                                className="h-8 w-8 rounded-full border border-gray-600" 
-                                alt="Admin" 
-                            />
+
+                            {
+                                User ? (<div>
+                                    <span className="text-xs text-gray-400">Admin</span>
+                                    <img
+                                        src="https://ui-avatars.com/api/?name=Admin+User&background=0D8ABC&color=fff"
+                                        className="h-8 w-8 rounded-full border border-gray-600"
+                                        alt="Admin"
+                                    />
+                                </div>) : (
+                                    <Button><Link href='/login'>Login</Link></Button>
+                                )
+                            }
                         </div>
                     </div>
 
                     <div className="md:hidden flex items-center">
-                        <button 
+                        <button
                             onClick={() => setIsOpen(!isOpen)}
                             className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none"
                         >
@@ -67,9 +80,9 @@ const Navbar = () => {
             <div className={`${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} md:hidden overflow-hidden bg-gray-800 transition-all duration-300 ease-in-out border-t border-gray-700`}>
                 <div className="px-2 pt-2 pb-3 space-y-1">
                     {navLinks.map((link) => (
-                        <Link 
+                        <Link
                             key={link.name}
-                            href={link.href} 
+                            href={link.href}
                             onClick={() => setIsOpen(false)}
                             className={`block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700 ${link.color}`}
                         >
@@ -78,11 +91,25 @@ const Navbar = () => {
                     ))}
                 </div>
                 <div className="pt-4 pb-3 border-t border-gray-700 px-5 flex items-center">
-                    <img className="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name=Admin+User" alt="Admin" />
-                    <div className="ml-3">
-                        <div className="text-base font-medium text-white">Admin User</div>
-                        <div className="text-sm font-medium text-gray-400">admin@projectpulse.com</div>
-                    </div>
+                    {
+                        User ? (
+                            <div>
+                                <img
+                                    src="https://ui-avatars.com/api/?name=Admin+User&background=0D8ABC&color=fff"
+                                    className="h-8 w-8 rounded-full border border-gray-600"
+                                    alt="Admin"
+                                />
+
+                                <div className="ml-3">
+                                    <div className="text-base font-medium text-white">Admin User</div>
+                                    <div className="text-sm font-medium text-gray-400">admin@projectpulse.com</div>
+                                </div>
+                            </div>
+                        ) : (
+                            <Button><Link href='/login'>Login</Link></Button>
+                        )
+                    }
+
                 </div>
             </div>
         </nav>
