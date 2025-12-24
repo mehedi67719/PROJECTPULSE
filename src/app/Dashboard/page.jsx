@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Risks = () => {
+const Dashboard = () => {
     return (
         <div>
-            this is riks page
+            this is dashboard
         </div>
     );
 };
 
-export default Risks;
+export default Dashboard;

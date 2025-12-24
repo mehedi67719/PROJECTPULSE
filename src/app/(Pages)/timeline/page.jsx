@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Users = () => {
+const Timeline = () => {
     return (
         <div>
-            this is Users page
+            this is timeline
         </div>
     );
 };
 
-export default Users;
+export default Timeline;
