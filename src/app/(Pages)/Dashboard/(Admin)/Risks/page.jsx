@@ -3,7 +3,7 @@ import React from 'react';
 const Risks = () => {
     return (
         <div>
-            this is Risks page
+            this is riks page
         </div>
     );
 };

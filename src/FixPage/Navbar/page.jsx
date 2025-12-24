@@ -1,8 +1,8 @@
 "use client";
 import { useState } from 'react';
-import Logo from '@/app/page';
-import Button from '@/Hook/Button/page';
 import Link from 'next/link';
+import Logo from '@/Component/Logo/page';
+import Button from '@/Component/Button/page';
 
 
 
@@ -14,11 +14,8 @@ const Navbar = () => {
     const User = null
 
     const navLinks = [
-        { name: 'Dashboard', href: '/Pages/Admin/Dashboard', color: 'text-white' },
-        { name: 'Projects', href: '/Pages/Admin/Projects', color: 'text-white' },
-        { name: 'Users', href: '/Pages/Admin/Users', color: 'text-white' },
-        { name: 'Risks', href: '/Pages/Admin/risks', color: 'text-red-400' },
-        { name: 'Activity', href:'/Pages/Admin/activity', color: 'text-white' },
+        { name: 'Dashboard', href: '/Dashboard', color: 'text-white' },
+     
     ];
 
     return (
@@ -54,7 +51,7 @@ const Navbar = () => {
                                         alt="Admin"
                                     />
                                 </div>) : (
-                                    <Button><Link href='/Pages/Authintaction/login'>Login</Link></Button>
+                                    <Button><Link href='/Authintaction/login'>Login</Link></Button>
                                 )
                             }
                         </div>
@@ -106,7 +103,7 @@ const Navbar = () => {
                                 </div>
                             </div>
                         ) : (
-                            <Button><Link href='/login'>Login</Link></Button>
+                            <Button><Link href='/Authintaction/login'>Login</Link></Button>
                         )
                     }
 

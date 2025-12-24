@@ -1,13 +1,51 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 
 const RegisterPage = () => {
-    const handleRegister = (e) => {
-        e.preventDefault();
-        console.log("Registration Attempted");
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        password: "",
+        image: ""
+    });
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
     };
+    const handleRegister = async (e) => {
+        e.preventDefault();
+
+        try {
+            const res = await fetch("http://localhost:5000/api/register", { 
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData), 
+            });
+
+            const data = await res.json(); 
+
+            if (res.ok) {
+                alert("Registration Successful!");
+                console.log("Success:", data);
+               
+            } else {
+                alert(data.message || "Registration Failed!");
+            }
+
+        } catch (error) {
+            console.error("Network Error:", error);
+            alert("Server is not responding!");
+        }
+    };
+
+
 
     const handleGoogleRegister = () => {
         console.log("Registering with Google");
@@ -22,48 +60,66 @@ const RegisterPage = () => {
                 </div>
 
                 <form className="space-y-4" onSubmit={handleRegister}>
-               
                     <div>
                         <label className="block text-sm font-medium text-gray-300 mb-1.5">Full Name</label>
-                        <input 
-                            type="text" 
+                        <input
+                            name="name"
+                            type="text"
+                            value={formData.name}
+                            onChange={handleChange}
                             className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 text-white outline-none transition"
                             placeholder="John Doe"
-                            required 
+                            required
                         />
                     </div>
 
-               
                     <div>
                         <label className="block text-sm font-medium text-gray-300 mb-1.5">Email Address</label>
-                        <input 
-                            type="email" 
+                        <input
+                            name="email"
+                            type="email"
+                            value={formData.email}
+                            onChange={handleChange}
                             className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 text-white outline-none transition"
                             placeholder="name@example.com"
-                            required 
+                            required
                         />
                     </div>
 
-               
+                    <div>
+                        <label className="block text-sm font-medium text-gray-300 mb-1.5">Image URL</label>
+                        <input
+                            name="image"
+                            type="url"
+                            value={formData.image}
+                            onChange={handleChange}
+                            className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 text-white outline-none transition"
+                            placeholder="https://example.com/photo.jpg"
+                            required
+                        />
+                    </div>
+
                     <div>
                         <label className="block text-sm font-medium text-gray-300 mb-1.5">Password</label>
-                        <input 
-                            type="password" 
+                        <input
+                            name="password"
+                            type="password"
+                            value={formData.password}
+                            onChange={handleChange}
                             className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 text-white outline-none transition"
                             placeholder="••••••••"
-                            required 
+                            required
                         />
                     </div>
 
-                    <button 
-                        type="submit" 
+                    <button
+                        type="submit"
                         className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-all shadow-lg mt-2"
                     >
                         Sign Up
                     </button>
                 </form>
 
-           
                 <div className="relative my-6">
                     <div className="absolute inset-0 flex items-center">
                         <div className="w-full border-t border-gray-700"></div>
@@ -73,23 +129,22 @@ const RegisterPage = () => {
                     </div>
                 </div>
 
-              
-                <button 
+                <button
                     type="button"
                     onClick={handleGoogleRegister}
                     className="w-full flex items-center justify-center gap-3 bg-white hover:bg-gray-100 text-gray-900 font-semibold py-3 rounded-lg transition-all transform active:scale-95"
                 >
-                    <img 
-                        src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" 
-                        alt="Google" 
+                    <img
+                        src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                        alt="Google"
                         className="w-5 h-5"
                     />
                     Sign up with Google
                 </button>
 
                 <div className="mt-8 text-center text-gray-400 text-sm">
-                    Already have an account? 
-                    <Link href="/Pages/Authintaction/login" className="text-blue-500 hover:underline ml-1 font-medium">Login here</Link>
+                    Already have an account?
+                    <Link href="/Authintaction/login" className="text-blue-500 hover:underline ml-1 font-medium">Login here</Link>
                 </div>
             </div>
         </div>
