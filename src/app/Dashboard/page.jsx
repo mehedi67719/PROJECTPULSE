@@ -1,11 +1,9 @@
-import React from 'react';
+import { redirect } from "next/navigation";
 
-const Dashboard = () => {
-    return (
-        <div>
-            this is dashboard
-        </div>
-    );
+
+const DashboardPage = () => {
+    redirect("/Dashboard/admin/Manage-Projects");
+    return null;
 };
 
-export default Dashboard;
+export default DashboardPage;

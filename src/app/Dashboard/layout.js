@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
 
     const menuItems = [
         { name: 'Add Projects', href: '/Dashboard/admin/add-projects', icon: <RiDashboardLine size={20} /> },
-        { name: 'Manage Projects', href: '/Dashboard/admin/Manage-clints-employes', icon: <RiTeamLine size={20} /> },
+        { name: 'Manage Projects', href: '/Dashboard/admin/Manage-Projects', icon: <RiTeamLine size={20} /> },
         { name: 'Projects Health', href: '/Dashboard/admin/Projects-health', icon: <RiPulseLine size={20} /> },
         { name: 'Add Users', href: '/Dashboard/admin/Add-users', icon: <RiUserAddLine size={20} /> },
         { name: 'Manage Users', href: '/Dashboard/admin/Manage-users', icon: <FaUserFriends size={20} /> },

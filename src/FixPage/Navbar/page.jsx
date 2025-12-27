@@ -26,16 +26,16 @@ const Navbar = () => {
 
     const getNavLinks = () => {
         if (!user) return [];
-        let links = [{ name: 'Dashboard', href:'/Dashboard' }];
+        let links = [{ name: 'Dashboard', href:'/Dashboard'}];
 
         if (user.role === 'admin') {
-            links.push({ name: 'All Projects', href:'/Manage-project' });
-            links.push({ name: 'All Teams', href:'/users' });
-            links.push({ name: 'System Risks', href: '/all-risks' });
+            links.push({ name: 'All Projects', href:'/All-projects' });
+            links.push({ name: 'All Teams', href:'/All-teams' });
+            links.push({ name: 'All Risks', href: '/all-risks' });
         }
 
         if (user.role === 'employee') {
-            links.push({ name: 'My Tasks', href: '/Dashboard/my-projects' });
+            links.push({ name: 'My Tasks', href: '/My-tasks' });
             links.push({ name: 'Submit Check-in', href: '/Dashboard/check-ins' });
             links.push({ name: 'Report Risk', href: '/Dashboard/risks' });
         }
@@ -105,7 +105,7 @@ const Navbar = () => {
                                                 <p className="text-[11px] text-gray-400 truncate mt-0.5">{user.email}</p>
                                             </div>
                                             <div className="py-1">
-                                                <Link href="/Dashboard/profile" onClick={() => setIsProfileOpen(false)} className="flex items-center px-4 py-2 text-sm hover:bg-gray-800 transition-colors">
+                                                <Link href="/my-profile" onClick={() => setIsProfileOpen(false)} className="flex items-center px-4 py-2 text-sm hover:bg-gray-800 transition-colors">
                                                     My Profile
                                                 </Link>
                                                 <Link href="/Dashboard/settings" onClick={() => setIsProfileOpen(false)} className="flex items-center px-4 py-2 text-sm hover:bg-gray-800 transition-colors">
