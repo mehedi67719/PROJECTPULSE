@@ -36,8 +36,8 @@ const Navbar = () => {
 
         if (user.role === 'employee') {
             links.push({ name: 'My Tasks', href: '/My-tasks' });
-            links.push({ name: 'Submit Check-in', href: '/Dashboard/check-ins' });
-            links.push({ name: 'Report Risk', href: '/Dashboard/risks' });
+            links.push({ name: 'Submit Check-in', href: '/Submit-chake-in' });
+            links.push({ name: 'Report Risk', href: '/Report-Risk' });
         }
 
         if (user.role === 'client') {
