@@ -2,14 +2,13 @@
 
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { HiMenu, HiX, HiDotsVertical } from 'react-icons/hi';
+import { HiMenu, HiX } from 'react-icons/hi';
 import { RiDashboardLine, RiUserAddLine, RiTeamLine, RiPulseLine } from 'react-icons/ri';
 import { usePathname } from 'next/navigation';
 import { FaUserFriends } from 'react-icons/fa';
 
 const Layout = ({ children }) => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    const [dotsOpen, setDotsOpen] = useState(false);
     const pathname = usePathname();
 
     const menuItems = [
@@ -23,7 +22,6 @@ const Layout = ({ children }) => {
     return (
         <div className="min-h-screen flex bg-black text-white">
 
-       
             <aside className="hidden md:flex flex-col w-64 bg-gradient-to-b from-gray-900 to-gray-950 p-6 h-screen">
                 <h2 className="text-2xl font-bold text-blue-500 mb-10 tracking-wide">Dashboard</h2>
                 <ul className="flex flex-col gap-4">
@@ -34,7 +32,9 @@ const Layout = ({ children }) => {
                                 <Link
                                     href={item.href}
                                     className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300
-                                        ${isActive ? 'bg-blue-500/30 text-blue-400 font-semibold' : 'bg-gray-800/40 hover:bg-blue-500/20 hover:text-blue-400'}`}
+                                    ${isActive
+                                        ? 'bg-blue-500/30 text-blue-400 font-semibold'
+                                        : 'bg-gray-800/40 hover:bg-blue-500/20 hover:text-blue-400'}`}
                                 >
                                     {item.icon}
                                     <span>{item.name}</span>
@@ -45,10 +45,13 @@ const Layout = ({ children }) => {
                 </ul>
             </aside>
 
-          
             {sidebarOpen && (
-                <div className="fixed inset-0 bg-black/50 z-40 md:hidden" onClick={() => setSidebarOpen(false)}></div>
+                <div
+                    className="fixed inset-0 bg-black/50 z-40 md:hidden"
+                    onClick={() => setSidebarOpen(false)}
+                />
             )}
+
             <aside className={`fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-gray-900 to-gray-950 p-6 z-50 md:hidden transform transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
                 <h2 className="text-2xl font-bold text-blue-500 mb-10 tracking-wide">Dashboard</h2>
                 <ul className="flex flex-col gap-4">
@@ -58,8 +61,11 @@ const Layout = ({ children }) => {
                             <li key={index}>
                                 <Link
                                     href={item.href}
+                                    onClick={() => setSidebarOpen(false)}
                                     className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300
-                                        ${isActive ? 'bg-blue-500/30 text-blue-400 font-semibold' : 'bg-gray-800/40 hover:bg-blue-500/20 hover:text-blue-400'}`}
+                                    ${isActive
+                                        ? 'bg-blue-500/30 text-blue-400 font-semibold'
+                                        : 'bg-gray-800/40 hover:bg-blue-500/20 hover:text-blue-400'}`}
                                 >
                                     {item.icon}
                                     <span>{item.name}</span>
@@ -71,17 +77,9 @@ const Layout = ({ children }) => {
             </aside>
 
             <div className="flex-1 h-screen flex flex-col">
-                
-                
-                <div className="md:hidden flex items-center justify-between p-4 border-b border-gray-800 relative">
-                    <button
-                        onClick={() => setDotsOpen(!dotsOpen)}
-                        className="absolute left-4 top-4 text-white p-2 rounded-full hover:bg-gray-800 transition"
-                    >
-                        <HiDotsVertical size={24} />
-                    </button>
 
-                    <h2 className="text-xl font-bold text-blue-500 mx-auto">Dashboard</h2>
+                <div className="md:hidden flex items-center justify-between p-4 border-b border-gray-800">
+                    <h2 className="text-xl font-bold text-blue-500">Dashboard</h2>
 
                     <button
                         onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -89,14 +87,6 @@ const Layout = ({ children }) => {
                     >
                         {sidebarOpen ? <HiX size={28} /> : <HiMenu size={28} />}
                     </button>
-
-                    {dotsOpen && (
-                        <div className="absolute left-4 top-12 bg-gray-800 rounded-md shadow-lg p-2 flex flex-col gap-2 z-50 w-36">
-                            <Link href="#" className="px-4 py-2 hover:bg-gray-700 rounded">Profile</Link>
-                            <Link href="#" className="px-4 py-2 hover:bg-gray-700 rounded">Settings</Link>
-                            <Link href="#" className="px-4 py-2 hover:bg-gray-700 rounded">Logout</Link>
-                        </div>
-                    )}
                 </div>
 
                 <main className="flex-1 overflow-auto">

@@ -27,7 +27,7 @@ const WeeklyCheckIn = () => {
         if (!projectId) return;
         const fetchProject = async () => {
             try {
-                const res = await fetch(`https://projectpules-server.vercel.app/project/${projectId}`);
+                const res = await fetch(`https://projectpules-server.onrender.com/project/${projectId}`);
                 const data = await res.json();
                 setProject(data);
             } catch (err) {
@@ -66,7 +66,7 @@ const WeeklyCheckIn = () => {
                 body.risk = { title: riskTitle, severity: riskSeverity, mitigation: riskMitigation };
             }
 
-            const res = await fetch(`https://projectpules-server.vercel.app/tasks`, {
+            const res = await fetch(`https://projectpules-server.onrender.com/tasks`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)

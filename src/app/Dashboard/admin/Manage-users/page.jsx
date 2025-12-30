@@ -9,7 +9,7 @@ const ManageUsers = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const res = await fetch("https://projectpules-server.vercel.app/users");
+                const res = await fetch("https://projectpules-server.onrender.com/users");
                 const data = await res.json();
                 setUsers(data);
             } catch (err) {
@@ -21,7 +21,7 @@ const ManageUsers = () => {
 
     const handleRoleChange = async (userId, newRole) => {
         try {
-            const res = await fetch(`https://projectpules-server.vercel.app/user/${userId}/role`, {
+            const res = await fetch(`https://projectpules-server.onrender.com/user/${userId}/role`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ role: newRole }),

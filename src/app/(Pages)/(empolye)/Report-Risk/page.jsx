@@ -20,7 +20,7 @@ const ReportRisk = () => {
 
     const fetchTasks = async () => {
       const res = await fetch(
-        `https://projectpules-server.vercel.app/tasks/email?email=${user.email}`
+        `https://projectpules-server.onrender.com/tasks/email?email=${user.email}`
       );
       const data = await res.json();
       setTasks(data);
@@ -39,7 +39,7 @@ const ReportRisk = () => {
         tasks.map(async (task) => {
           if (!map[task.projectId]) {
             const res = await fetch(
-              `https://projectpules-server.vercel.app/project/${task.projectId}`
+              `https://projectpules-server.onrender.com/project/${task.projectId}`
             );
             const data = await res.json();
             map[task.projectId] = data?.name || "Unnamed Project";

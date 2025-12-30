@@ -13,7 +13,7 @@ const SeeTasks = () => {
 
     const fetchTasks = async () => {
       try {
-        const res = await fetch(`https://projectpules-server.vercel.app/tasks/${projectId}`);
+        const res = await fetch(`https://projectpules-server.onrender.com/tasks/${projectId}`);
         const data = await res.json();
         setTasks(data);
       } catch (err) {

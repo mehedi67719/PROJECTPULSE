@@ -19,7 +19,7 @@ const Home = () => {
         const load = async () => {
             try {
                 const roleRes = await fetch(
-                    `https://projectpules-server.vercel.app/api/user-role?email=${email}`
+                    `https://projectpules-server.onrender.com/api/user-role?email=${email}`
                 )
                 const roleData = await roleRes.json()
                 setRole(roleData.role)
@@ -28,8 +28,8 @@ const Home = () => {
 
                 if (roleData.role === 'admin') {
                     const [p, u] = await Promise.all([
-                        fetch('https://projectpules-server.vercel.app/all-projects').then(r => r.json()),
-                        fetch('https://projectpules-server.vercel.app/users').then(r => r.json())
+                        fetch('https://projectpules-server.onrender.com/all-projects').then(r => r.json()),
+                        fetch('https://projectpules-server.onrender.com/users').then(r => r.json())
                     ])
                     projectData = p
                     setProjects(p)
@@ -38,15 +38,15 @@ const Home = () => {
 
                 if (roleData.role === 'client') {
                     projectData = await fetch(
-                        `https://projectpules-server.vercel.app/all-projects/${email}/client`
+                        `https://projectpules-server.onrender.com/all-projects/${email}/client`
                     ).then(r => r.json())
                     setProjects(projectData)
                 }
 
                 if (roleData.role === 'employee') {
                     const [p, t] = await Promise.all([
-                        fetch(`https://projectpules-server.vercel.app/all-projects/${email}/employee`).then(r => r.json()),
-                        fetch(`https://projectpules-server.vercel.app/tasks/email?email=${email}`).then(r => r.json())
+                        fetch(`https://projectpules-server.onrender.com/all-projects/${email}/employee`).then(r => r.json()),
+                        fetch(`https://projectpules-server.onrender.com/tasks/email?email=${email}`).then(r => r.json())
                     ])
                     projectData = p
                     setProjects(p)
@@ -57,8 +57,8 @@ const Home = () => {
                 const map = {}
                 for (let project of projectData) {
                     const [tasksRes, feedbackRes] = await Promise.all([
-                        fetch(`https://projectpules-server.vercel.app/tasks/${project._id}`),
-                        fetch(`https://projectpules-server.vercel.app/feedback?projectId=${project._id}`)
+                        fetch(`https://projectpules-server.onrender.com/tasks/${project._id}`),
+                        fetch(`https://projectpules-server.onrender.com/feedback?projectId=${project._id}`)
                     ])
 
                     const taskList = tasksRes.ok ? await tasksRes.json() : []

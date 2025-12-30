@@ -9,16 +9,16 @@ const ProjectsHealth = () => {
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const res = await fetch('https://projectpules-server.vercel.app/all-projects')
+                const res = await fetch('https://projectpules-server.onrender.com/all-projects')
                 const data = await res.json()
                 setProjects(data)
 
                 const healthResults = {}
                 for (let project of data) {
-                    const tasksRes = await fetch(`https://projectpules-server.vercel.app/tasks/${project._id}`)
+                    const tasksRes = await fetch(`https://projectpules-server.onrender.com/tasks/${project._id}`)
                     const tasks = tasksRes.ok ? await tasksRes.json() : []
 
-                    const feedbackRes = await fetch(`https://projectpules-server.vercel.app/feedback?projectId=${project._id}`)
+                    const feedbackRes = await fetch(`https://projectpules-server.onrender.com/feedback?projectId=${project._id}`)
                     const feedbacks = feedbackRes.ok ? await feedbackRes.json() : []
 
                     const avgClientSatisfaction = feedbacks.length

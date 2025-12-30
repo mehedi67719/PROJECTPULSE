@@ -8,7 +8,7 @@ const ManageProjects = () => {
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const res = await fetch("https://projectpules-server.vercel.app/all-projects");
+                const res = await fetch("https://projectpules-server.onrender.com/all-projects");
                 const result = await res.json();
                 const projectList = result.data || result;
                 setProjects(projectList);
