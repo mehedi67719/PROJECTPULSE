@@ -22,7 +22,7 @@ const LoginPage = () => {
         });
 
         if (res?.ok) {
-            router.push('/Dashboard'); 
+            router.push('/'); 
         } else {
             alert("Login Failed! Please check your email and password.");
         }

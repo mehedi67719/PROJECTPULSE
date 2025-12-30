@@ -41,7 +41,7 @@ const AddProjects = () => {
                         description: '',
                         startDate: '',
                         endDate: '',
-                        status: 'On Track',
+                        status: 'pending',
                     });
                 } else {
                     Swal.fire({

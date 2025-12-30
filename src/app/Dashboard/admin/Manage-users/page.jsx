@@ -93,7 +93,7 @@ const ManageUsers = () => {
                                     onClick={() => handleRoleChange(user._id, "admin")}
                                     disabled={user.role === "admin"}
                                     className={`relative p-3 rounded-full transition text-white group ${user.role === "admin"
-                                        ? "bg-red-300 cursor-not-allowed"
+                                        ? "bg-gray-500 cursor-not-allowed"
                                         : "bg-red-600 hover:bg-red-700"}`
                                     }
                                 >
@@ -107,7 +107,7 @@ const ManageUsers = () => {
                                     onClick={() => handleRoleChange(user._id, "employee")}
                                     disabled={user.role === "employee"}
                                     className={`relative p-3 rounded-full transition text-white group ${user.role === "employee"
-                                        ? "bg-green-300 cursor-not-allowed"
+                                        ? "bg-gray-500 cursor-not-allowed"
                                         : "bg-green-600 hover:bg-green-700"}`
                                     }
                                 >
@@ -121,7 +121,7 @@ const ManageUsers = () => {
                                     onClick={() => handleRoleChange(user._id, "client")}
                                     disabled={user.role === "client"}
                                     className={`relative p-3 rounded-full transition text-white group ${user.role === "client"
-                                        ? "bg-blue-300 cursor-not-allowed"
+                                        ? "bg-gray-500 cursor-not-allowed"
                                         : "bg-blue-600 hover:bg-blue-700"}`
                                     }
                                 >

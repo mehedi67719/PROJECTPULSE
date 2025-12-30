@@ -79,7 +79,7 @@ const WeeklyCheckIn = () => {
                     text: 'Weekly Check-in submitted successfully',
                     timer: 2000,
                     showConfirmButton: false
-                }).then(() => { router.push("/Dashboard"); });
+                }).then(() => { router.push("/Submit-chake-in"); });
             } else {
                 Swal.fire({ icon: 'error', title: 'Error', text: data.message || "Submission failed" });
             }
