@@ -1,4 +1,5 @@
 'use client';
+export const dynamic = "force-dynamic";
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from 'react';
@@ -26,7 +27,7 @@ const WeeklyCheckIn = () => {
         const fetchProject = async () => {
             if (!projectId) return;
             try {
-                const res = await fetch(`http://localhost:5000/project/${projectId}`);
+                const res = await fetch(`https://projectpules-server.vercel.app/project/${projectId}`);
                 const data = await res.json();
                 setProject(data);
             } catch (err) {
@@ -65,7 +66,7 @@ const WeeklyCheckIn = () => {
                 body.risk = { title: riskTitle, severity: riskSeverity, mitigation: riskMitigation };
             }
 
-            const res = await fetch(`http://localhost:5000/tasks`, {
+            const res = await fetch(`https://projectpules-server.vercel.app/tasks`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
