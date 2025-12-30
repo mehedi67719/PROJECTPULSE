@@ -97,9 +97,7 @@ const Navbar = () => {
                                             <Link href="/my-profile" onClick={() => setIsProfileOpen(false)} className="block px-4 py-2 hover:bg-gray-800">
                                                 My Profile
                                             </Link>
-                                            <Link href="/Dashboard/settings" onClick={() => setIsProfileOpen(false)} className="block px-4 py-2 hover:bg-gray-800">
-                                                Settings
-                                            </Link>
+                    
                                             <button
                                                 onClick={() => signOut({ callbackUrl: '/Authintaction/login' })}
                                                 className="w-full text-left px-4 py-2 text-red-400 hover:bg-red-950/40"
