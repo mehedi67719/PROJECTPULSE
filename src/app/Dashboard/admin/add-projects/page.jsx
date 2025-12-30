@@ -21,7 +21,7 @@ const AddProjects = () => {
 
         const addProject = async () => {
             try {
-                const res = await fetch("http://localhost:5000/all-projects", {
+                const res = await fetch("https://projectpules-server.vercel.app/all-projects", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(project)

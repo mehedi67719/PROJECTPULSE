@@ -15,18 +15,18 @@ const ClientProjectsHealth = () => {
 
         const fetchProjects = async () => {
             try {
-                const res = await fetch(`http://localhost:5000/all-projects/${userEmail}/client`)
+                const res = await fetch(`https://projectpules-server.vercel.app/all-projects/${userEmail}/client`)
                 const data = await res.json()
                 setProjects(data)
 
                 const healthResults = {}
 
                 for (let project of data) {
-                    const tasksRes = await fetch(`http://localhost:5000/tasks/${project._id}`)
+                    const tasksRes = await fetch(`https://projectpules-server.vercel.app/tasks/${project._id}`)
                     const tasks = tasksRes.ok ? await tasksRes.json() : []
 
                     const feedbackRes = await fetch(
-                        `http://localhost:5000/feedback?projectId=${project._id}`
+                        `https://projectpules-server.vercel.app/feedback?projectId=${project._id}`
                     )
                     const feedbacks = feedbackRes.ok ? await feedbackRes.json() : []
 

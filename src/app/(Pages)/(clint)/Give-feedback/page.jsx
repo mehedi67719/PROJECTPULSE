@@ -14,13 +14,13 @@ const ClientFeedback = () => {
     useEffect(() => {
         if (!user) return
         const loadProjects = async () => {
-            const res = await fetch(`http://localhost:5000/all-projects/${user.email}/client`)
+            const res = await fetch(`https://projectpules-server.vercel.app/all-projects/${user.email}/client`)
             const data = await res.json()
             setProjects(data)
             data.forEach(p => loadTasks(p._id))
         }
         const loadTasks = async projectId => {
-            const res = await fetch(`http://localhost:5000/tasks/${projectId}`)
+            const res = await fetch(`https://projectpules-server.vercel.app/tasks/${projectId}`)
             const data = res.ok ? await res.json() : []
             setTasksByProject(prev => ({ ...prev, [projectId]: data }))
         }
@@ -47,7 +47,7 @@ const ClientFeedback = () => {
             })
         }
         try {
-            const res = await fetch(`http://localhost:5000/feedback`, {
+            const res = await fetch(`https://projectpules-server.vercel.app/feedback`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ projectId, clientEmail: user.email, ...payload })

@@ -19,7 +19,7 @@ const handler = NextAuth({
         if (!credentials?.email || !credentials?.password) return null;
 
         try {
-          const res = await fetch("http://localhost:5000/api/login", {
+          const res = await fetch("https://projectpules-server.vercel.app/api/login", {
             method: "POST",
             body: JSON.stringify({
               email: credentials.email,
@@ -59,7 +59,7 @@ const handler = NextAuth({
  
       if (token?.email && !token.role) {
         try {
-          const res = await fetch(`http://localhost:5000/api/user-role?email=${token.email}`);
+          const res = await fetch(`https://projectpules-server.vercel.app/api/user-role?email=${token.email}`);
           const data = await res.json();
           if (data?.role) {
             token.role = data.role;

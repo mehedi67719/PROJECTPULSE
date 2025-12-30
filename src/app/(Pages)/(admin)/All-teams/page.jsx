@@ -7,7 +7,7 @@ const AllTeams = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch("http://localhost:5000/users");
+        const res = await fetch("https://projectpules-server.vercel.app/users");
         const data = await res.json();
         setUsers(data);
       } catch (err) {

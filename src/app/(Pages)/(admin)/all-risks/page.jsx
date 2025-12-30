@@ -9,7 +9,7 @@ const Allrisks = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const res = await fetch("http://localhost:5000/tasks");
+        const res = await fetch("https://projectpules-server.vercel.app/tasks");
         const data = await res.json();
         const onlyRiskTasks = data.filter(task => task.risk);
         setTasks(onlyRiskTasks);
@@ -32,7 +32,7 @@ const Allrisks = () => {
         tasks.map(async (task) => {
           if (!map[task.projectId]) {
             const res = await fetch(
-              `http://localhost:5000/project/${task.projectId}`
+              `https://projectpules-server.vercel.app/project/${task.projectId}`
             );
             const data = await res.json();
             map[task.projectId] = data?.name || "Unnamed Project";

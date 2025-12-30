@@ -16,14 +16,14 @@ const MyTasks = () => {
       try {
    
         const res = await fetch(
-          `http://localhost:5000/all-projects/${user.email}/${user.role}`
+          `https://projectpules-server.vercel.app/all-projects/${user.email}/${user.role}`
         );
         const projectData = await res.json();
         setProjects(projectData);
 
       
         const taskRes = await fetch(
-          `http://localhost:5000/tasks/email?email=${user.email}`
+          `https://projectpules-server.vercel.app/tasks/email?email=${user.email}`
         );
         const taskData = await taskRes.json();
         setTasks(taskData);

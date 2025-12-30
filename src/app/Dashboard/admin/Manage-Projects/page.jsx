@@ -9,8 +9,8 @@ const AssignProject = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const resUsers = await fetch("http://localhost:5000/users");
-            const resProjects = await fetch("http://localhost:5000/all-projects");
+            const resUsers = await fetch("https://projectpules-server.vercel.app/users");
+            const resProjects = await fetch("https://projectpules-server.vercel.app/all-projects");
             setUsers(await resUsers.json());
             setProjects(await resProjects.json());
         };
@@ -39,7 +39,7 @@ const AssignProject = () => {
 
         if (!confirm.isConfirmed) return;
 
-        const res = await fetch(`http://localhost:5000/all-projects/${projectId}`, {
+        const res = await fetch(`https://projectpules-server.vercel.app/all-projects/${projectId}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ client }),
@@ -86,7 +86,7 @@ const AssignProject = () => {
             { _id: employee._id, name: employee.name, email: employee.email }
         ];
 
-        const res = await fetch(`http://localhost:5000/all-projects/${projectId}`, {
+        const res = await fetch(`https://projectpules-server.vercel.app/all-projects/${projectId}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ employees: updatedEmployees }),
