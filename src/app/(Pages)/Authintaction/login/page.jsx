@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React, { useState, useEffect } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -8,11 +8,12 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const router = useRouter();
   const { data: session } = useSession();
+  const router = useRouter();
 
+  // Logged-in user => home page
   useEffect(() => {
-    if (session) router.push("/");
+    if (session) router.push("/"); // role যাই হোক / এ redirect
   }, [session, router]);
 
   const handleEmailLogin = async (e) => {
@@ -28,11 +29,7 @@ const LoginPage = () => {
 
     setLoading(false);
 
-    if (res?.ok) {
-      router.push("/");
-    } else {
-      setError("Invalid email or password!");
-    }
+    if (!res?.ok) setError("Invalid email or password!");
   };
 
   return (
@@ -71,22 +68,6 @@ const LoginPage = () => {
             {loading ? "Signing In..." : "Sign In"}
           </button>
         </form>
-
-        <div className="my-6 text-center text-gray-400 text-sm">
-          OR
-        </div>
-
-        <button
-          onClick={() => signIn("google", { callbackUrl: "/" })}
-          className="w-full bg-white text-gray-900 py-3 rounded-lg font-semibold flex items-center justify-center gap-2"
-        >
-          <img
-            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
-            alt="Google"
-            className="w-5 h-5"
-          />
-          Login with Google
-        </button>
       </div>
     </div>
   );
