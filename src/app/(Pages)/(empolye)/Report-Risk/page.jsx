@@ -42,7 +42,7 @@ const ReportRisk = () => {
               `https://projectpules-server.vercel.app/project/${task.projectId}`
             );
             const data = await res.json();
-            map[task.projectId] = data?.projectName || "Unnamed Project";
+            map[task.projectId] = data?.name || "Unnamed Project";
           }
         })
       );

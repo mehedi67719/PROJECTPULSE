@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 const WeeklyCheckIn = () => {
     const searchParams = useSearchParams();
     const router = useRouter();
-    const projectId = searchParams.get('projectId');
+    const projectId = searchParams?.get('projectId');
     const { data: session } = useSession();
     const user = session?.user;
 
@@ -24,8 +24,8 @@ const WeeklyCheckIn = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        if (!projectId) return;
         const fetchProject = async () => {
-            if (!projectId) return;
             try {
                 const res = await fetch(`https://projectpules-server.vercel.app/project/${projectId}`);
                 const data = await res.json();
