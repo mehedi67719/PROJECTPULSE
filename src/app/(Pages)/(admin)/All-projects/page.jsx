@@ -8,9 +8,10 @@ const ManageProjects = () => {
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const res = await fetch("http://localhost:5000/all-projects");
-                const data = await res.json();
-                setProjects(data);
+                const res = await fetch("https://projectpules-server.vercel.app/all-projects");
+                const result = await res.json();
+                const projectList = result.data || result;
+                setProjects(projectList);
             } catch (err) {
                 console.log(err);
             }
@@ -47,9 +48,8 @@ const ManageProjects = () => {
 
     return (
         <div className="min-h-screen max-w-[95%] mx-auto p-6 md:p-10 bg-gray-950 text-white">
-            <h1 className="text-3xl font-bold text-blue-500 mb-8">Manage Projects</h1>
-
-            {projects.length === 0 ? (
+            <h1 className="text-3xl font-bold text-blue-500 mb-8">All Projects</h1>
+            {!projects || projects.length === 0 ? (
                 <p className="text-gray-400">No projects found.</p>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -65,7 +65,6 @@ const ManageProjects = () => {
                                 <span className={`px-3 py-1 rounded-full text-white text-sm ${getStatusColor(project.status, project.endDate)}`}>
                                     {getStatusText(project.status, project.endDate)}
                                 </span>
-
                                 <div className="mt-3">
                                     <p className="text-gray-400 mb-1 text-sm">Client</p>
                                     {project.client ? (
@@ -74,7 +73,6 @@ const ManageProjects = () => {
                                         <span className="px-3 py-1 bg-gray-600 text-white rounded-full text-sm">No client</span>
                                     )}
                                 </div>
-
                                 <div className="mt-3">
                                     <p className="text-gray-400 mb-1 text-sm">Employees</p>
                                     {project.employees?.length > 0 ? (
