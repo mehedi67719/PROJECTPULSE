@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ProjectPulse – Project Health Tracker
 
-## Getting Started
+ProjectPulse is a full-stack internal system for tracking project progress, employee confidence, client feedback, and delivery risks.  
+It automatically calculates a Project Health Score to help teams identify project issues early.
 
-First, run the development server:
+---
 
+## 🌐 Live Demo
+🔗 Live URL:https://projectpulse-z2yp.vercel.app/
+🔗 GitHub Server: https://github.com/mehedi67719/projectpules-server.git
+
+---
+
+## 🛠 Tech Stack
+- **Frontend:** Next.js, Tailwind CSS
+- **Backend:** Express.js
+- **Database:** MongoDB Atlas
+- **Authorization:** Role-based (Admin / Employee / Client)
+
+---
+
+## 👥 User Roles
+**Admin**
+- Manage projects, users, and risks
+- Monitor project health
+
+**Employee**
+- Submit weekly check-ins
+- Report risks and blockers
+
+**Client**
+- Submit weekly feedback
+- Flag project issues
+
+---
+
+## 📁 Core Features
+- Secure login (no public registration)
+- Project creation & assignment
+- Weekly employee check-ins
+- Weekly client feedback
+- Risk management system
+- Role-based dashboards
+- Activity timeline per project
+
+---
+
+## ❤️ Project Health Score Logic (0–100)
+Calculated using:
+- Client satisfaction (30%)
+- Employee confidence (25%)
+- Progress vs timeline (25%)
+- Open risks & flagged issues (20%)
+
+**Health Status**
+- 80–100 → On Track  
+- 60–79 → At Risk  
+- Below 60 → Critical  
+
+---
+
+## ⚙️ Setup
 ```bash
+git clone https://github.com/mehedi67719/PROJECTPULSE.git
+npm install
+npm run seed
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
