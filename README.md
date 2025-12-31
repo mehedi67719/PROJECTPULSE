@@ -59,6 +59,11 @@ Calculated using:
 
 ---
 
+## Login info <br/>
+-Admin :  email= mehedi@gmail.com , password = mehedi123 <br/>
+-Empolyee: email = asad@gmail.com , password= asad123 <br/>
+-Clint: email=jewel@gmail.com , password= jewel123 <br/>
+
 ## ⚙️ Setup
 ```bash
 git clone https://github.com/mehedi67719/PROJECTPULSE.git
